@@ -1,0 +1,185 @@
+@import '../../css/sass/base.scss';
+.tab-panes-container-wrapper {
+    margin: 0 auto;
+}
+
+.panes-container-box {
+    position: relative;
+}
+
+.tab-list {
+    overflow: hidden;
+    /* width: calc(100% - 10px);
+	width: -webkit-calc(100% - 10px); */
+	width: 100%;
+	margin-bottom: 0px;
+	height: 26px;
+	padding-left: 10px;
+	font-size: 0;
+	background: $main-bgc;
+	// overflow-x: scroll;
+	white-space: nowrap;
+	display: none;
+}
+
+.tab-list .tab-list-item {
+    position: relative;
+    display: inline-block;
+    height: 26px;
+    font-size: 12px;
+    line-height: 26px;
+    border-right: 1px solid #4E555F;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    background: #fff;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tab-list .tab-list-item span {
+    display: inline-block;
+    width: 134px;
+    padding: 0 10px;
+    background: #A9B2BB;
+    border-radius: 8px 8px 0 0;
+}
+
+.tab-list .tab-list-item.is-active span,
+.tab-list .tab-list-item.is-first-active span,
+.tab-list .tab-list-item.is-last-active span {
+    background: #fff;
+}
+
+.tab-list .tab-list-item.is-active::before,
+.tab-list .tab-list-item.is-last-active::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 0 0 8px 0;
+    background: #A9B2BB;
+    z-index: 2;
+}
+
+.tab-list .tab-list-item.is-first-active::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 0 0 8px 0;
+    background: $main-bgc;
+    z-index: 2;
+}
+
+.tab-list .tab-list-item.is-active span::before,
+.tab-list .tab-list-item.is-first-active span::before,
+.tab-list .tab-list-item.is-last-active span::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    left: -8px;
+    bottom: 0;
+    z-index: 1;
+    background: #fff;
+}
+
+.tab-list .tab-list-item.is-active::after,
+.tab-list .tab-list-item.is-first-active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 0 0 0px 8px;
+    background: #A9B2BB;
+    z-index: 2;
+}
+
+.tab-list .tab-list-item.is-last-active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 0 0 0px 8px;
+    background: $main-bgc;
+    z-index: 2;
+}
+
+.tab-list .tab-list-item.is-active span::after,
+.tab-list .tab-list-item.is-first-active span::after,
+.tab-list .tab-list-item.is-last-active span::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    right: -8px;
+    bottom: 0;
+    z-index: 1;
+    background: #fff;
+}
+
+$tab-list-item-decorate-gap: 20px;
+.tab-list-decorate {
+    height: 40px;
+    line-height: 40px;
+    .tab-list-item {
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        &.is-active {
+            color: $main-blue;
+            border-bottom: 4px solid $main-blue;
+        }
+        &:not(:last-child) {
+            margin-right: 2 * $tab-list-item-decorate-gap;
+            span {
+                position: relative;
+                &::after {
+                    content: ' ';
+                    display: block;
+                    width: 2px;
+                    height: 1.2em;
+                    background: #dedede;
+                    position: absolute;
+                    right: $tab-list-item-decorate-gap * -1;
+                    top: 0.1em;
+                }
+            }
+        }
+    }
+}
+
+.tab-list-text-shadow {
+    padding-right: 40px;
+    .tab-list-item {
+        cursor: pointer;
+        text-align: right;
+        height: 28px;
+        @include FS(20px);
+        font-weight: bold;
+        line-height: 28px;
+        margin-bottom: 15px;
+        color: #999;
+        &.is-active {
+            color: $font-weight-color;
+            // text-shadow: 0px 8px 9px rgba(166, 178, 198, 1);
+        }
+        > * {
+          display: inline-block;
+          vertical-align: top;
+        }
+        .tab-icon{
+          width: 30px;
+          height: 30px;
+          margin-right: 15px;
+        }
+    }
+}
